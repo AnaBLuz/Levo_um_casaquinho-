@@ -38,6 +38,7 @@ export default function Hoje(){
             </InfoTemp>
         </InfosTemp>
         <Resposta> {resposta} </Resposta>
+        <Creditos>Dados fornecidos pela <div>  Open Weather API</div></Creditos>
         </>
     );
 }
@@ -98,4 +99,18 @@ const Resposta = styled.div`
     margin-left: 20px;
     margin-top: 30px;
     font-size: 24px;
+`
+const Creditos = styled.div`
+    width:405px;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 48px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    div{
+        color: #96a7f2;
+        
+    }
 `

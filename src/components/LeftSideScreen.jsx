@@ -16,9 +16,22 @@ export default function LeftScreen(){
                 <div>31 </div>
                 <div>°C</div>
                 </div>
+                <TempMsg>Céu Aberto</TempMsg>
             </Temperature>
+            <Divisor></Divisor>
+            <DataHorario>
+                <p>16/11/2023</p>
+                Quinta-feira, 16:32
+            </DataHorario>
+            <ToggleF>
+               <TrackF> 
+                 <KnobF></KnobF>
+               </TrackF>
+               <p>°F</p>
+            </ToggleF>
+            
         </ScreenContainer>
-
+    
     );
 }
 
@@ -61,6 +74,7 @@ const Temperature = styled.div`
     height: 228px;
     margin-left: 90px;
     margin-top: 50px;
+    
     div{
         display: flex;
         align-items: center;
@@ -74,4 +88,57 @@ const Temperature = styled.div`
       } 
     }
    
+`
+const TempMsg = styled.div`
+    margin-left: 150px;
+    margin-top: 40px;
+    font-size: 30px;
+`
+const Divisor = styled.div`
+    background-color: #EDEDED;
+    width: 395px;
+    border-radius: 5px;
+    height: 5px;
+    margin-left: 90px;
+`
+
+const DataHorario = styled.div`
+    width: 215px;
+    height: 80px;
+    margin-top: 30px;
+    margin-left: 200px;
+    font-size: 24px;
+    p{
+        margin-left: 40px;
+    }
+
+`
+const ToggleF = styled.div`
+    width: 115px;
+    height:48px;
+    margin-left: 200px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    p{
+        font-family:'Poppins';
+        font-size: 24px;
+        font-weight:400;
+        line-height: 48px;
+    }
+`
+const KnobF = styled.div`
+background: #FFFFFF;
+box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.12);
+border-radius: 16px;
+width:27px;
+height:27px;
+
+`
+const TrackF = styled.div`
+background: #E9E9EA;
+border-radius: 16px;
+width: 51px;
+height:31px;
+
 `
