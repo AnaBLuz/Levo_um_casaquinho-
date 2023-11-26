@@ -1,10 +1,10 @@
-import MainScreen from "./components/MainScreen"
+import FullScreen from "./components/FullScreen"
 
 
 function App() {
   return (
     <>
-      <MainScreen />
+      <FullScreen />
     </>
   )
 }
