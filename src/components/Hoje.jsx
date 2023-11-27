@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components"
 
-export default function Hoje(){
-    const [resposta, setResposta] = useState('AAA');
+export default function Hoje(props){
+   
+    const {cityName, temperatura, tempMin, tempMax, umidade, velVento, lon, lat} = props;
+    const [resposta, setResposta] = useState('');
 
     useEffect(() => {
-        let temp = 30;
-        if(temp < 17 ){
+        console.log(cityName)
+        if((temperatura/10) < 17 || (tempMin/10) < 17 || (tempMax/10) < 17){
             setResposta('Sim, leve um casaquinho!')
         }
         else{
@@ -17,24 +19,24 @@ export default function Hoje(){
 
     return(
         <>
-        <Cidade>São Paulo</Cidade>
-        <LatLong>Lat:  44.34    Long: 10.99 </LatLong>
+        <Cidade>{cityName}</Cidade>
+        <LatLong><span>Lat:{lat}     </span> <span>Long:{lon}</span></LatLong>
         <InfosTemp> 
             <InfoTemp>
                 <InfoTexto>Mínima</InfoTexto>
-                <InfoValor>31° C</InfoValor>
+                <InfoValor>{Math.floor(tempMin/10)}° C</InfoValor>
             </InfoTemp>
             <InfoTemp>
                 <InfoTexto>Máxima</InfoTexto>
-                <InfoValor>48°C</InfoValor>
+                <InfoValor>{Math.floor(tempMax/10)}° C</InfoValor>
             </InfoTemp>
             <InfoTemp>
                 <InfoTexto>Umidade</InfoTexto>
-                <InfoValor>64%</InfoValor>
+                <InfoValor>{umidade}%</InfoValor>
             </InfoTemp>
             <InfoTemp>
                 <InfoTexto>Velocidade do Vento</InfoTexto>
-                <InfoValor>12 m/s</InfoValor>
+                <InfoValor>{velVento}m/s</InfoValor>
             </InfoTemp>
         </InfosTemp>
         <Resposta> {resposta} </Resposta>

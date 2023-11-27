@@ -1,58 +1,26 @@
 import styled from "styled-components";
-import casaco from './../assets/casaco.png'
 import circle from './../assets/circle.png'
-import lupa from './../assets/lupa.png'
-import { useState } from "react";
-import axios from "axios";
 
-export default function LeftScreen(){
+
+export default function LeftScreen(props){
      
-    const [cityName, setCityName] = useState('')
-    const [temp, setTemp] = useState()
-
-    const handleNameInputChange = (event) => setCityName(event.target.value)
-
-function searchCity(){
-    const API_key = import.meta.env.VITE_APIKEY;
-    const apiWeatherURL= `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_key}`;
-    axios.get(`${apiWeatherURL}`)
-    .then((response) => {setTemp(response.data.main.temp)})
-    .catch(e => {
-        console.log("erro");
-    });
-}
-
+    const {temperatura,description, ano, mes, dia, hora, minutos,  diaSemana} = props;
+    const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
 
     return(
         <ScreenContainer>
-            <Logo>
-                <img src={casaco} height="120px" width="120px"/>
-                <div>Levo um casaquinho?</div>
-            </Logo>
-            <SearchBar>
-                <img src={lupa}  
-                height="30px" 
-                width="30px"
-                onClick={searchCity}
-                />
-                <input 
-                type="text" 
-                placeholder="Procure por uma cidade" 
-                onChange={handleNameInputChange}
-                />
-            </SearchBar>
             <Temperature> 
                 <div>
                 <img src={circle} height="120px" width="120px"/>
-                <div>{temp}</div>
+                <div>{Math.floor(temperatura/10)}</div>
                 <div>°C</div>
                 </div>
-                <TempMsg>Céu Aberto</TempMsg>
+                <TempMsg>{description}</TempMsg>
             </Temperature>
             <Divisor></Divisor>
             <DataHorario>
-                <p>16/11/2023</p>
-                Quinta-feira, 16:32
+                <p>{dia} <span>/</span>{mes} <span>/</span> {ano}</p>
+                <div>{diasDaSemana[diaSemana]}<span>, </span>{hora}<span>:</span>{minutos}</div>
             </DataHorario>
             <ToggleF>
                <TrackF> 
@@ -69,50 +37,6 @@ function searchCity(){
 const ScreenContainer = styled.div`
     background-color: white;
     width:662px;
-`
-
-const Logo = styled.div`
-    
-    height: 120px;
-    margin-top: 50px;
-    margin-left: 59px;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    div{
-        font-family: 'Poppins';
-        font-size: 70px;
-        line-height:50px;
-        font-weight: 600;
-        flex-wrap:wrap;
-        margin-left: 10px;
-    }
-    
-    
-    
-`
-const SearchBar = styled.div`
-    width: 500px;
-    height: 80px;
-    margin-left: 88px;
-    margin-top: 50px;
-    background-color:#EDEDEF;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    input {
-        padding: 0.8rem;
-        border:none;
-        background-color:#EDEDEF;
-        font-family:'Montserrat';
-        font-size:22px;
-        font-weight:500;
-        line-height:24px;
-        color:#424243;
-    }
-    img{
-        margin-left: 30px;
-    }
 `
 
 const Temperature = styled.div`

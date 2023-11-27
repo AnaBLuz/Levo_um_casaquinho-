@@ -4,7 +4,9 @@ import Hoje from './Hoje';
 import ProximosDias from './ProximosDias';
 
 
-export default function MainScreen(){
+export default function MainScreen(props){
+
+    const {cityName, temperatura, tempMin, tempMax, umidade, velVento, lon, lat} = props;
     const [activeTab, setActiveTab] = useState('Hoje');
 
     function handleChangeTab(tabName){
@@ -14,7 +16,16 @@ export default function MainScreen(){
     function renderTabContent(){
         switch(activeTab){
             case 'Hoje':
-                return <Hoje />
+                return <Hoje 
+                cityName = {cityName}
+                temperatura = {temperatura} 
+                tempMin = {tempMin} 
+                tempMax={tempMax}
+                umidade={umidade}
+                velVento={velVento}
+                lon={lon}
+                lat={lat}
+                />
             case 'ProximosDias':
                 return <ProximosDias /> 
         }
