@@ -1,11 +1,23 @@
 import styled from "styled-components";
 
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    ResponsiveContainer,
+  } from "recharts";
+
 export default function ProximosDias(){
     return(
         <>
         <Cidade>São Paulo</Cidade>
         <LatLong>Lat:  44.34    Long: 10.99 </LatLong>
-        <Grafico></Grafico>
+        <Grafico>
+        </Grafico>
         <Creditos>Dados fornecidos pela <div>  Open Weather API</div></Creditos>
         </>
     );
