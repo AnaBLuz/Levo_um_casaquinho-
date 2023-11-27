@@ -1,19 +1,50 @@
 import styled from "styled-components";
 import casaco from './../assets/casaco.png'
 import circle from './../assets/circle.png'
+import lupa from './../assets/lupa.png'
+import { useState } from "react";
+import axios from "axios";
 
 export default function LeftScreen(){
+     
+    const [cityName, setCityName] = useState('')
+    const [temp, setTemp] = useState()
+
+    const handleNameInputChange = (event) => setCityName(event.target.value)
+
+function searchCity(){
+    const API_key = import.meta.env.VITE_APIKEY;
+    const apiWeatherURL= `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_key}`;
+    axios.get(`${apiWeatherURL}`)
+    .then((response) => {setTemp(response.data.main.temp)})
+    .catch(e => {
+        console.log("erro");
+    });
+}
+
+
     return(
         <ScreenContainer>
             <Logo>
                 <img src={casaco} height="120px" width="120px"/>
                 <div>Levo um casaquinho?</div>
             </Logo>
-            <SearchBar></SearchBar>
+            <SearchBar>
+                <img src={lupa}  
+                height="30px" 
+                width="30px"
+                onClick={searchCity}
+                />
+                <input 
+                type="text" 
+                placeholder="Procure por uma cidade" 
+                onChange={handleNameInputChange}
+                />
+            </SearchBar>
             <Temperature> 
                 <div>
                 <img src={circle} height="120px" width="120px"/>
-                <div>31 </div>
+                <div>{temp}</div>
                 <div>°C</div>
                 </div>
                 <TempMsg>Céu Aberto</TempMsg>
@@ -67,6 +98,21 @@ const SearchBar = styled.div`
     margin-top: 50px;
     background-color:#EDEDEF;
     border-radius: 24px;
+    display: flex;
+    align-items: center;
+    input {
+        padding: 0.8rem;
+        border:none;
+        background-color:#EDEDEF;
+        font-family:'Montserrat';
+        font-size:22px;
+        font-weight:500;
+        line-height:24px;
+        color:#424243;
+    }
+    img{
+        margin-left: 30px;
+    }
 `
 
 const Temperature = styled.div`
