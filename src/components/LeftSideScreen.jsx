@@ -12,7 +12,7 @@ export default function LeftScreen(props){
             <Temperature> 
                 <div>
                 <img src={circle} height="120px" width="120px"/>
-                <div>{Math.floor(temperatura-273,15)}</div>
+                <div>{Math.floor(temperatura-273)}</div>
                 <div>°C</div>
                 </div>
                 <TempMsg>{description}</TempMsg>

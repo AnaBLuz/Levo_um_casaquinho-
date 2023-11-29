@@ -7,14 +7,15 @@ export default function Hoje(props){
     const [resposta, setResposta] = useState('');
 
     useEffect(() => {
-        if(((temperatura-273,15) < 17) || ((tempMin-273,15) < 17) || ((tempMax-273,15) < 17)){
+        if(((temperatura-273) < 17) || ((tempMin-273) < 17) || ((tempMax-273) < 17)){
             setResposta('Sim, leve um casaquinho!')
+        
         }
         else{
             setResposta('Não, você não deve levar um casaquinho!')
         }
 
-      }, [{cityName}]);
+      }, []);
 
     return(
         <>
@@ -23,11 +24,11 @@ export default function Hoje(props){
         <InfosTemp> 
             <InfoTemp>
                 <InfoTexto>Mínima</InfoTexto>
-                <InfoValor>{Math.floor(tempMin-273,15)}° C</InfoValor>
+                <InfoValor>{Math.floor(tempMin-273)}° C</InfoValor>
             </InfoTemp>
             <InfoTemp>
                 <InfoTexto>Máxima</InfoTexto>
-                <InfoValor>{Math.floor(tempMax-273,15)}° C</InfoValor>
+                <InfoValor>{Math.floor(tempMax-273)}° C</InfoValor>
             </InfoTemp>
             <InfoTemp>
                 <InfoTexto>Umidade</InfoTexto>
