@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LeftScreen from './LeftSideScreen';
 import MainScreen from './MainScreen';
 import lupa from './../assets/lupa.png'
-import { useCallback, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import casaco from './../assets/casaco.png'
 
@@ -10,7 +10,7 @@ import casaco from './../assets/casaco.png'
 
 export default function FullScreen(){
     
-    const [cityName, setCityName] = useState('')
+    const [cityName, setCityName] = useState('Belém')
     const [temp, setTemp] = useState('');
     const [description, setDescription] = useState('');
     const [tempMin, setTempMin] = useState('');
@@ -31,6 +31,10 @@ export default function FullScreen(){
 
 
     const handleNameInputChange = (event) => setCityName(event.target.value)
+
+useEffect(() => {
+    searchCity()
+      }, []);
 
 function searchCity(){
     const API_key = import.meta.env.VITE_APIKEY;
@@ -147,6 +151,7 @@ const SearchBar = styled.div`
     }
     img{
         margin-left: 30px;
+        cursor: pointer;
     }
 `
 

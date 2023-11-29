@@ -7,15 +7,14 @@ export default function Hoje(props){
     const [resposta, setResposta] = useState('');
 
     useEffect(() => {
-        console.log(cityName)
-        if((temperatura/10) < 17 || (tempMin/10) < 17 || (tempMax/10) < 17){
+        if(((temperatura-273,15) < 17) || ((tempMin-273,15) < 17) || ((tempMax-273,15) < 17)){
             setResposta('Sim, leve um casaquinho!')
         }
         else{
             setResposta('Não, você não deve levar um casaquinho!')
         }
 
-      }, []);
+      }, [{cityName}]);
 
     return(
         <>
@@ -24,11 +23,11 @@ export default function Hoje(props){
         <InfosTemp> 
             <InfoTemp>
                 <InfoTexto>Mínima</InfoTexto>
-                <InfoValor>{Math.floor(tempMin/10)}° C</InfoValor>
+                <InfoValor>{Math.floor(tempMin-273,15)}° C</InfoValor>
             </InfoTemp>
             <InfoTemp>
                 <InfoTexto>Máxima</InfoTexto>
-                <InfoValor>{Math.floor(tempMax/10)}° C</InfoValor>
+                <InfoValor>{Math.floor(tempMax-273,15)}° C</InfoValor>
             </InfoTemp>
             <InfoTemp>
                 <InfoTexto>Umidade</InfoTexto>
@@ -40,7 +39,7 @@ export default function Hoje(props){
             </InfoTemp>
         </InfosTemp>
         <Resposta> {resposta} </Resposta>
-        <Creditos>Dados fornecidos pela <div>  Open Weather API</div></Creditos>
+        <Creditos>Dados fornecidos pela <a href="https://openweathermap.org/">  Open Weather API</a></Creditos>
         </>
     );
 }
@@ -49,19 +48,20 @@ const Cidade = styled.div`
     width: 754px;
     height: 108px;
     font-family:'Poppins';
-    font-size: 150px;
+    font-size: 120px;
     font-weight:400;
     margin-top: 50px;
     margin-left: 50px;
 `
 const LatLong = styled.div`
-    width: 258px;
+    width: 300px;
     height: 48px;
     font-family:'Poppins';
     font-size: 24px;
     margin-top: 50px;
     margin-left: 50px;
     display: flex;
+    justify-content: space-between;
 `
 const InfosTemp = styled.div`
     width: 1200px;
@@ -111,7 +111,7 @@ const Creditos = styled.div`
     margin-left: 20px;
     display: flex;
     justify-content: space-between;
-    div{
+    a{
         color: #96a7f2;
         
     }

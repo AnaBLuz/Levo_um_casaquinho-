@@ -27,7 +27,11 @@ export default function MainScreen(props){
                 lat={lat}
                 />
             case 'ProximosDias':
-                return <ProximosDias /> 
+                return <ProximosDias
+                cityName = {cityName}
+                lon={lon}
+                lat={lat}
+                /> 
         }
     }
 
@@ -58,10 +62,12 @@ const TabHoje = styled.div`
     font-family: 'Poppins';
     font-size: 48px;
     color: ${ props => props.statusTab === 'Hoje' ? 'black' : '#C8C8C8'} ;
+    cursor: pointer;
 `
 const TabProximosDias = styled.div`
     font-family: 'Poppins';
     font-size: 48px;
     color: ${ props => props.statusTab === 'ProximosDias' ? 'black' : '#C8C8C8'} ;
+    cursor: pointer;
     
 `
