@@ -36,6 +36,12 @@ useEffect(() => {
     searchCity()
       }, []);
 
+function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+          searchCity();
+        }
+      }
+
 function searchCity(){
     const API_key = import.meta.env.VITE_APIKEY;
     const apiWeatherURL= `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_key}&lang=pt_br`;
@@ -74,6 +80,7 @@ function searchCity(){
                 type="text" 
                 placeholder="Procure por uma cidade" 
                 onChange={handleNameInputChange}
+                onKeyDown={(e) => handleKeyPress(e)}
                 />
             </SearchBar>
             <LeftScreen 

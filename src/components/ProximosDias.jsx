@@ -9,7 +9,7 @@ export default function ProximosDias(props){
 
     useEffect(() => {
         const API_key = import.meta.env.VITE_APIKEY;
-        const apiWeatherURL= `https://pro.openweathermap.org/data/2.5/forecast/climate?lat=${lat}&lon=${lon}&appid=${API_key}`;
+        const apiWeatherURL= `https://api.openweathermap.org/data/2.5//forecast?q=${cityName}&appid=${API_key}&lang=pt_br`;
         axios.get(`${apiWeatherURL}`)
     .then((response) => {
         setData(response.data)
@@ -26,9 +26,9 @@ export default function ProximosDias(props){
         <LatLong><p>Lat:{lat}     </p><p>Long:{lon}</p></LatLong>
         <Grafico>
         <LineChart width={600} height={300} data={data}>
-            <Line type="monotone" dataKey="list.temp.min" stroke="#8884d8" />
+            <Line type="monotone" dataKey="list[0].main.temp" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="list.temp.max" />
+            <XAxis dataKey="list[0].main.temp" />
                 <YAxis />
         </LineChart>
         </Grafico>
