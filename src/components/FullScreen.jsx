@@ -29,8 +29,10 @@ export default function FullScreen(){
     const minutos = data.getMinutes();
     const diaSemana = data.getDay();
 
+    const [input, setInput] = useState('Belém')
 
-    const handleNameInputChange = (event) => setCityName(event.target.value)
+
+    const handleNameInputChange = (event) => setInput(event.target.value)
 
 useEffect(() => {
     searchCity()
@@ -43,6 +45,7 @@ function handleKeyPress(event) {
       }
 
 function searchCity(){
+    setCityName(input);
     const API_key = import.meta.env.VITE_APIKEY;
     const apiWeatherURL= `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_key}&lang=pt_br`;
     axios.get(`${apiWeatherURL}`)
@@ -56,7 +59,7 @@ function searchCity(){
                          setvelVento(response.data.wind.speed) 
                          setLon(response.data.coord.lon)
                          setLat(response.data.coord.lat)
-                         setCityName(cityName)
+                         
                          })
     .catch(e => {
         console.log("erro");
