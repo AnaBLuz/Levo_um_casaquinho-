@@ -9,7 +9,7 @@ export default function ProximosDias(props){
 
     useEffect(() => {
         const API_key = import.meta.env.VITE_APIKEY;
-        const apiWeatherURL= `https://api.openweathermap.org/data/2.5//forecast?q=${cityName}&appid=${API_key}&lang=pt_br`;
+        const apiWeatherURL= `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_key}&lang=pt_br`;
         axios.get(`${apiWeatherURL}`)
     .then((response) => {
         setData(response.data)

@@ -69,6 +69,10 @@ const InfosTemp = styled.div`
     height: 410px;
     display: flex;
     flex-wrap: wrap;
+    @media (max-width: 600px) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+}
     
 `
 const InfoTemp = styled.div`
@@ -77,6 +81,12 @@ const InfoTemp = styled.div`
     width: 500px;
     height: 180px;
     margin: 20px;
+    @media (max-width: 600px) {
+      display: flex;
+      flex-direction:column;
+      align-items:center;
+      
+    }
 `
 const InfoTexto = styled.div`
      font-family:'Poppins';
@@ -86,6 +96,10 @@ const InfoTexto = styled.div`
      margin-top: 50px;
      margin-left: 30px;
      line-height: 24px;
+     @media (max-width: 600px) {
+      margin-top: 20px;
+      
+    }
 `
 const InfoValor = styled.div`
     font-family:'Poppins';
@@ -102,6 +116,10 @@ const Resposta = styled.div`
     margin-left: 20px;
     margin-top: 30px;
     font-size: 24px;
+    @media (max-width: 600px) {
+      margin-top: 100px;
+      
+    }
 `
 const Creditos = styled.div`
     width:405px;

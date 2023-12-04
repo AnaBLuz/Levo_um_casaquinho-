@@ -78,7 +78,7 @@ function searchCity(){
                 <img src={lupa}  
                 height="30px" 
                 width="30px"
-                //onClick={searchCity}
+                onClick={searchCity}
                 />
                 <input 
                 type="text" 
@@ -119,6 +119,9 @@ const ScreenContainer = styled.div`
     max-width: 1912px;
     height: 1072px;
     display:flex;
+    @media (max-width: 600px) {
+      flex-direction: column;
+}
 
 `
 

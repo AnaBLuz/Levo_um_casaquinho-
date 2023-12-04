@@ -6,6 +6,15 @@ Aplicação (front-end) web onde, a partir do nome de uma cidade, são exibidas 
 ```bash
 https://levo-um-casaquinho-psi.vercel.app/
 ```
+# Tecnologias Utilizadas
+```bash
+ - HTML
+ - CSS
+ - Javascript
+ - React
+ - Styled Componets
+```
+
 
 # Como rodar em desenvolvimento
 
