@@ -29,41 +29,42 @@ export default function FullScreen(){
     const minutos = data.getMinutes();
     const diaSemana = data.getDay();
 
-    const [input, setInput] = useState('Belém')
+    const [input, setInput] = useState(cityName)
 
 
     const handleNameInputChange = (event) => setInput(event.target.value)
 
-useEffect(() => {
-    searchCity()
-      }, []);
+ useEffect(() => {
+     searchCity()
+       }, []);
 
 function handleKeyPress(event) {
+    
         if (event.key === 'Enter') {
-          searchCity();
+            searchCity();
         }
       }
 
 function searchCity(){
     setCityName(input);
     const API_key = import.meta.env.VITE_APIKEY;
-    const apiWeatherURL= `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_key}&lang=pt_br`;
-    axios.get(`${apiWeatherURL}`)
-    .then((response) => {
-                         setTemp(response.data.main.temp)
-                         setTimeStamp(response.data.dt) 
-                         setDescription(response.data.weather[0].description)
-                         setTempMin(response.data.main.temp_min)
-                         setTempMax(response.data.main.temp_max)
-                         setUmidade(response.data.main.humidity)
-                         setvelVento(response.data.wind.speed) 
-                         setLon(response.data.coord.lon)
-                         setLat(response.data.coord.lat)
-                         
-                         })
-    .catch(e => {
-        console.log("erro");
-    });
+     const apiWeatherURL= `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_key}&lang=pt_br`;
+     axios.get(`${apiWeatherURL}`)
+     .then((response) => {
+                          setTemp(response.data.main.temp)
+                          setTimeStamp(response.data.dt) 
+                          setDescription(response.data.weather[0].description)
+                          setTempMin(response.data.main.temp_min)
+                          setTempMax(response.data.main.temp_max)
+                          setUmidade(response.data.main.humidity)
+                          setvelVento(response.data.wind.speed) 
+                          setLon(response.data.coord.lon)
+                          setLat(response.data.coord.lat)
+                        
+                          })
+     .catch(e => {
+         console.log("erro");
+     });
 }
 
     return(
@@ -77,7 +78,7 @@ function searchCity(){
                 <img src={lupa}  
                 height="30px" 
                 width="30px"
-                onClick={searchCity}
+                //onClick={searchCity}
                 />
                 <input 
                 type="text" 
@@ -114,7 +115,8 @@ function searchCity(){
 
 const ScreenContainer = styled.div`
     background-color: #D8D8D8;
-    width: 1912px;
+    width: 100%;
+    max-width: 1912px;
     height: 1072px;
     display:flex;
 
